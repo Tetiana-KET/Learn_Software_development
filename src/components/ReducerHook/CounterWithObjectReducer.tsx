@@ -1,4 +1,7 @@
 import React, { useReducer } from 'react';
+// when using action as object you are able to pass additional data to the reducer function.
+// using state as object you are able to keep track on multiple state variables
+// maintaining multiple variables in a single state object is suitable for dealing with global state
 
 const inputStyle = {
 	border: 'solid 1px #000',
@@ -10,22 +13,18 @@ interface State {
 	count: number;
 	secondCount: number;
 }
-// when using action as object you are able to pass additional data to the reducer function.
-type Action =
-	| { type: 'increment'; value: number }
-	| { type: 'decrement'; value: number }
-	| { type: 'increment2'; value: number }
-	| { type: 'decrement2'; value: number }
-	| { type: 'reset' };
 
-// using state as object you are able to keep track on multiple state variables
-// maintaining multiple variables in a single state object is suitable for dealing with global state
+type UpdateActionType = 'increment' | 'decrement' | 'increment2' | 'decrement2';
+type UpdateAction = { type: UpdateActionType; value: number };
+
+type ResetAction = { type: 'reset' };
+
 const initialState: State = {
 	count: 0,
 	secondCount: 0,
 };
 
-const reducer = (state: State, action: Action): State => {
+const reducer = (state: State, action: UpdateAction | ResetAction): State => {
 	switch (action.type) {
 		case 'increment':
 			return { ...state, count: state.count + action.value };

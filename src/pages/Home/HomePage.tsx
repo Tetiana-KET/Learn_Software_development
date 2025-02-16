@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 
 import { posts as dummyPosts } from '../../api/data/posts';
-import ClickCounter from '../../components/ControlledForm/RenderPropsExample/ClickCounter';
-import Counter from '../../components/ControlledForm/RenderPropsExample/Counter';
-import HoverCounter from '../../components/ControlledForm/RenderPropsExample/HoverCounter';
+import ClickCounter from '../../components/RenderPropsExample/ClickCounter';
+import Counter from '../../components/RenderPropsExample/Counter';
+import HoverCounter from '../../components/RenderPropsExample/HoverCounter';
 import CounterWithObjectReducer from '../../components/ReducerHook/CounterWithObjectReducer';
 import { Post } from '../../types/entities/Post';
 import MultipleUseReducerHooks from '../../components/ReducerHook/MultipleUseReducerHooks';
@@ -12,6 +12,15 @@ import FetchingWithLoader from '../../components/FetchingAxios/FetchingWithLoade
 import FetchingDataWithReducer from '../../components/FetchingDataWithReducer/FetchingDataWithReducer';
 import Parent from '../../components/OptimizationUseCallback/Parent';
 import CounterUseMemo from '../../components/OptimizationUseMemo/CounterUseMemo';
+import RefsDemoUseRefFocusInput from '../../components/Refs/RefsDemoUseRefFocusInput';
+import TimerWithUseRef from '../../components/Refs/TimerWithUseRef';
+import FormControlled from '../../components/FormControlled/FormControlled';
+import FormControlledWithHook from '../../components/FormControlled/FormControlledWithHook';
+import ObjectUseState from '../../components/Render/ObjectUseState';
+import ParentOne from '../../components/OptimizationSameReference/ParentOne';
+import ChildOne from '../../components/OptimizationSameReference/ChildOne';
+import { ChildA } from '../../components/OptimizationCotext/Children';
+import ContextParent from '../../components/OptimizationCotext/CountContext';
 
 /**
  * responsible for rendering home page and its components
@@ -36,6 +45,12 @@ function HomePage() {
 		<div className='container py-4'>
 			<h1 className='mb-8 text-center text-4xl font-bold'>Home Page</h1>
 			<div className='mx-auto w-[500px]'>
+				<ParentOne>
+					<ChildOne />
+				</ParentOne>
+				<ContextParent>
+					<ChildA />
+				</ContextParent>
 				{/* <ForwardRefInputParent /> */}
 				{/* <FocusInput /> */}
 				{/* <RefsDemo /> */}
@@ -49,7 +64,7 @@ function HomePage() {
 				</Counter>
 				when used this way in Counter use this.props.children
 				*/}
-				<Counter
+				{/* <Counter
 					render={(count, incrementCount) => (
 						<ClickCounter count={count} incrementCount={incrementCount} />
 					)}
@@ -58,17 +73,21 @@ function HomePage() {
 					render={(count, incrementCount) => (
 						<HoverCounter count={count} incrementCount={incrementCount} />
 					)}
-				/>
+				/> */}
 				{/* <Timer /> */}
 				{/* <DataFetchingWithAxios /> */}
 				{/* <CounterWithReducer /> */}
 				{/* <CounterWithObjectReducer /> */}
 				{/* <MultipleUseReducerHooks /> */}
+				<RefsDemoUseRefFocusInput />
 				<ContextWithReducer />
 				<FetchingWithLoader />
 				<FetchingDataWithReducer />
 				<Parent />
-				<CounterUseMemo />
+				{/* <CounterUseMemo /> */}
+				<TimerWithUseRef />
+				<FormControlledWithHook />
+				<ObjectUseState />
 			</div>
 		</div>
 	);

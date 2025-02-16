@@ -6,9 +6,11 @@ const inputStyle = {
 	margin: '5px',
 };
 
+type Action = 'increment' | 'decrement' | 'reset';
+
 const initialAState = 0;
 
-const reducer = (curState: number, action: any) => {
+const reducer = (curState: number, action: Action) => {
 	switch (action) {
 		case 'increment':
 			return curState + 1;
