@@ -79,6 +79,12 @@ const iceCreamReducer = (state = initialIceCreamState, action) => {
 				...state,
 				numberOfIceCreams: state.numberOfIceCreams + action.payload,
 			};
+		// for example we want to price client with icecream as bonus for each cake order
+		case CAKE_ORDERED:
+			return {
+				...state,
+				numberOfIceCreams: state.numberOfIceCreams - 1,
+			};
 		default:
 			return state;
 	}
@@ -125,8 +131,5 @@ actions.orderCreator();
 actions.orderCreator(3);
 actions.orderCreator();
 actions.orderCreator(2);
-actions.restoreCakes();
-actions.restoreCakes(5);
-actions.orderIceCream(10);
-actions.restockIceCream(5);
+
 unsubscribe();

@@ -17,3 +17,7 @@
 4. The recommendation is to group together the reducer logic and the actions for a single feature in a single file.
    The file should contain `slice` as a suffix
    The entire application state is split into slices and managed individually
+
+## logger package
+
+`npm install redux-logger`
