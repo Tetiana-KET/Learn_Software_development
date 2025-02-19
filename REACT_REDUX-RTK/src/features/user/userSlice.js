@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-	isLogging: false,
+	isLoading: false,
 	error: '',
 	users: [],
 };
@@ -12,11 +12,11 @@ const initialState = {
 // and perform necessary state transition
 // reducers should be added with extraReducers
 
-const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
+export const fetchUsers = createAsyncThunk('user/fetchUsers', async () => {
 	const response = await axios.get(
 		'https://jsonplaceholder.typicode.com/users'
 	);
-	return response.data.map(user => user.id);
+	return response.data;
 });
 
 export const userSlice = createSlice({
@@ -25,15 +25,15 @@ export const userSlice = createSlice({
 	extraReducers: builder => {
 		// You can chain calls, or have separate `builder.addCase()` lines each time
 		builder.addCase(fetchUsers.pending, state => {
-			state.isLogging = true;
+			state.isLoading = true;
 		});
 		builder
 			.addCase(fetchUsers.fulfilled, (state, action) => {
-				state.isLogging = false;
+				state.isLoading = false;
 				state.users = action.payload;
 			})
 			.addCase(fetchUsers.rejected, (state, action) => {
-				state.isLogging = false;
+				state.isLoading = false;
 				state.error = action.error.message;
 				state.users = [];
 			});
