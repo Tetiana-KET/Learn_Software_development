@@ -1,0 +1,19 @@
+// Interpolation in SASS allows you to dynamically insert variables, expressions, or function results 
+// into selectors, property names, and values. It uses the #{} syntax.
+
+@mixin btn1($name: '', $bg: #444, $color: #fff, $br: 5px){
+  .btn1#{$name} {
+    border: 0;
+  border-radius: $br;
+  background-color: $bg;
+  color: $color;
+  padding: 10px;
+  margin: 0.5em auto;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.5s;
+  }
+}
+
+@include btn1;
+@include btn1( '-third', #d9e70c, $color: #0c0c0c);

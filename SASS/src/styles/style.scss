@@ -1,0 +1,52 @@
+@use "variables";
+@use "base";
+@use "message";
+@use "Interpolation";
+@use "destructing_list";
+
+h2 {
+  color: variables.$main-color;
+}
+
+//default value for variable in brackets
+//pass variable in brackets to make kode reusable, it is a function
+
+@mixin button($color:#686565){
+  border: 0;
+  border-radius: 5px;
+  background-color: $color;
+  color: variables.$white;
+  padding: 10px;
+  margin: 0.5em auto;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.btn {
+  //mixin, it includes all the styles defined in mixin, 
+  //repeating it in every place you include it in final css
+ @include button;
+
+  //& - parent selector, in this example it is changed to btn
+  &:hover {
+    background-color: variables.$dark-grey;
+  }
+
+  .container & {
+    float: right;
+    margin-left: 0.5em;
+  }
+}
+
+.btn-primaty {
+  @include button(variables.$blue);
+}
+
+// @extend inherits from .btn-primaty creating a shared rool for a couple of classes
+// not repeating all the styles defined in .btn-primary in final css
+.btn-secondary {
+  @extend .btn-primaty;
+  background-color: variables.$violet;
+;
+}

@@ -1,0 +1,6 @@
+@use "variables" as var;
+
+body {
+  text-align: center;
+  background-color: var.$bg;
+}

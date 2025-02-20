@@ -1,0 +1,22 @@
+@mixin btn2($name: '', $bg: #444, $color: #fff, $br: 5px){
+  .btn2#{$name} {
+    border: 0;
+  border-radius: $br;
+  background-color: $bg;
+  color: $color;
+  padding: 10px;
+  margin: 0.5em auto;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.5s;
+  }
+}
+
+$buttons: 
+"",
+-primary #555 #154865,
+-secondary #3f3232 #156554;
+
+@each $name, $bg, $color in $buttons {
+    @include btn2($name, $bg, $color)
+}

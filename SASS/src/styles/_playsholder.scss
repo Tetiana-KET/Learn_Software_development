@@ -1,0 +1,19 @@
+//A placeholder selector in SASS is a special type of selector that does not get compiled into CSS 
+// unless it is extended (@extend). It is defined using the % symbol.
+%button-base {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.primary-btn {
+  @extend %button-base;
+  background-color: blue;
+  color: white;
+}
+
+.secondary-btn {
+  @extend %button-base;
+  background-color: gray;
+  color: black;
+}

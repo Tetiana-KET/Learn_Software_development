@@ -1,0 +1,41 @@
+@use "variables" as var;
+
+@mixin message($bg:#888, $color: white, $border-color:#ddd){
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  background: $bg;
+  font-size: 1rem;
+  color: $color;
+  padding: 1rem 1.25rem;
+  margin: 1em 0;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover{
+  background-color: var.$dark-grey;
+ }
+
+ h1 {
+  margin: 0 0 0.2em 0;
+  font-size: 2.5em
+ }
+}
+
+.msg {
+ @include message();
+
+  &-info{
+    background-color: #13cccc;
+    &:hover{
+      background-color: var.$sea;
+    }
+  }
+}
+
+
+
+
+.msg h1 {
+  margin: 0 0 0.2em 0;
+}
