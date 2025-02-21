@@ -174,3 +174,20 @@ When inside `#{}` (interpolation), `1em/2em` is treated not as a division but as
 ![Math functions in sass](Math-functions-in-sass.png)
 
 ![conditionals](conditionals.png)
+
+## Color Utilities
+
+and much more...
+![color utilities](color-utilities.png)
+
+- `color.adjust($color, $property: value)`; - Adjusting Specific Color Properties
+  Allows fine-tuned control by modifying specific color properties (lightness, saturation, hue, etc.).
+  You can modify multiple properties at once.
+
+- `darken($color, $amount)`; - Making Colors Darker
+  When to Use? - Creating hover states, shadows, or darker themes.
+
+- `lighten($color, $amount)`; - Increases the lightness of a color by a specified percentage.
+  `lighten($color, 30)` - by 30%, "%" sign is not necessary
+- `transparentize($color, $amount)`; - Decreases the opacity of a color by a specified percentage.
+  `$new-color: transparentize(#3498db, 0.3)`;
