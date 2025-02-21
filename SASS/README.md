@@ -43,6 +43,7 @@ In SASS (SCSS), lists are a data type used to store multiple values in a single 
 
 1. Creating Lists
    A list can contain multiple values separated by spaces or commas.
+   Lists in SASS can be separated by slashes, but this is not common in modern styles.
 
 Values in SCSS lists might be quoted or unquoted, depending on the type of value
 
@@ -126,3 +127,50 @@ $colors: (
   ```
 
 ![maps methods](maps-methods.png)
+
+## Operators and Conditionals
+
+![Operators](Operators.png)
+
+`#{1em/2em}` - is considered as a list
+**Understanding `/` in SASS**
+
+1. Mathematical Division (/)
+
+In calculations, `/` behaves as a division operator unless it's inside interpolation (`#{}`).
+
+```
+.box {
+  width: (10em / 2); // 5em (math operation)
+}
+```
+
+2. Slash as a Separator in Lists
+
+When inside `#{}` (interpolation), `1em/2em` is treated not as a division but as a literal list separator.
+
+```
+.box {
+  font-size: #{1em/2em};
+}
+```
+
+🔽 Compiled CSS:
+
+```
+.box {
+  font-size: 1em/2em;
+}
+```
+
+** to Force Division Instead of a List Use parentheses:**
+
+```
+.box {
+  font-size: #{(1em / 2em)}; // Ensures division (0.5em)
+}
+```
+
+![Math functions in sass](Math-functions-in-sass.png)
+
+![conditionals](conditionals.png)

@@ -1,10 +1,15 @@
 // Interpolation in SASS allows you to dynamically insert variables, expressions, or function results
 // into selectors, property names, and values. It uses the #{} syntax.
 
-@mixin btn1($name: '', $bg: #444, $color: #fff, $br: 55px) {
+@mixin btn1($name: '', $bg: #444, $color: #fff, $oval: false) {
 	.btn1#{$name} {
-		border: 0;
-		border-radius: $br;
+		@if $oval {
+			border-radius: 50%;
+			border: 2px solid #0b053b;
+		} @else {
+			border-radius: 0;
+			border: 0;
+		}
 		background-color: $bg;
 		color: $color;
 		padding: 10px;
@@ -16,4 +21,4 @@
 }
 
 @include btn1;
-@include btn1('-third', #d9e70c, $color: #0c0c0c);
+@include btn1('-circle', #d9e70c, $color: #0c0c0c, $oval: true);

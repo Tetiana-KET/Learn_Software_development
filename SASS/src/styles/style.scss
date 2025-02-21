@@ -1,8 +1,8 @@
 @use 'variables';
 @use 'base';
 @use 'message';
-@use 'Interpolation';
-@use 'destructing_list';
+@use 'Interpolation_condition';
+@use 'destructing_list_each';
 @use 'map';
 
 h2 {
