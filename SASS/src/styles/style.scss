@@ -4,6 +4,7 @@
 @use 'Interpolation_condition';
 @use 'destructing_list_each';
 @use 'map';
+@use 'badge-problem';
 
 h2 {
 	color: variables.$main-color;
