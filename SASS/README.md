@@ -77,3 +77,52 @@ Values in SCSS lists might be quoted or unquoted, depending on the type of value
 SCSS allows destructuring when iterating over lists using @each. This is useful when dealing with nested lists or key-value pairs.
 
 5. Checking List Length `length(listName)`
+
+## @for
+
+The @for directive in SASS is used to create loops, allowing you to generate repetitive styles dynamically. It works similarly to a for loop in traditional programming languages.
+
+**`@for` Works with numbers (ranges), not lists.**
+
+![for-loop](for-loop.png)
+
+`@for $variable from <start> through <end> {}` - through: Includes the ending value.
+`@for $variable from <start> to <end> {}` - to: NOT Includes the ending value.
+
+```
+$colors: red, blue, green;
+
+@for $i from 1 through length($colors) {
+  .text-#{$i} {
+    color: nth($colors, $i);
+  }
+}
+```
+
+## Maps
+
+- `@use "sass:map"` - **add the use rule at the top, to specify, that you are using this map module**
+- maps are immutable, when you add a value to a map it will return new map
+- Maps store key-value pairs (like objects in JavaScript).
+
+```
+$colors: (
+  primary: blue,
+  secondary: green,
+  danger: red
+);
+```
+
+- The keys have to be unique, If a duplicate key is defined, the last one will overwrite the previous value.
+
+- Quoted and unquoted keys are different!
+  You may use quotes, because quoted and unquoted strings are interpreted as different values
+
+  ```
+  $theme: (
+  "primary": blue,  // Quoted
+  primary: red      // Unquoted
+  );
+  ```
+
+![maps methods](maps-methods.png)

@@ -1,0 +1,40 @@
+// add the use rule at the top, to specify, that you are using this map module
+@use 'sass:map';
+
+// than define a map using variable name
+// you can put a map inside a map
+
+$colorsList: (
+	primary: blue,
+	secondary: green,
+);
+
+$buttons: (
+	'-primary': (
+		RoyalBlue,
+		#3ab5e9,
+	),
+	'-secondary': (
+		green,
+		yellow,
+	),
+);
+
+@mixin btn3($name: '', $bg: #444, $color: #fff, $br: 0px) {
+	.btn3#{$name} {
+		border: 0;
+		border-radius: $br;
+		background-color: $bg;
+		color: $color;
+		padding: 10px;
+		margin: 0.5em auto;
+		display: inline-block;
+		cursor: pointer;
+		transition: all 0.5s;
+	}
+}
+
+@include btn3('');
+@each $key, $values in $buttons {
+	@include btn3($key, $values...);
+}
