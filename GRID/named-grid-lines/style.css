@@ -1,0 +1,38 @@
+/*
+We naming a LINE not the track after that line
+we can reference or names or numbers
+even when we give names but reference numbers it works
+it is possible to give several names and reference both
+
+if you are using naming convention of -start / -end on a pair of line names
+that actually creates a grid area named whatever name comes before the dash
+in this case "outer"  and we can reference thi grid-area
+*/
+
+.site {
+	display: grid;
+	grid-template-columns: [start outer-start] 2fr [start-middle] 1fr [end-middle] 1fr [end outer-end];
+	grid-template-rows: auto 1fr 3fr;
+}
+.masthead {
+	grid-column: start-middle/end;
+	grid-row: 2/3;
+}
+.identifier {
+}
+.page-title {
+	grid-column: start/end;
+	grid-row: 1/2;
+}
+.main-content {
+	grid-column: outer-start/2;
+	grid-row: 2/4;
+}
+.sidebar {
+}
+.footer-content {
+	/* grid-column: 1/4; */
+	grid-area: outer;
+}
+.bg {
+}

@@ -1,0 +1,141 @@
+/* mobile first */
+body {
+	color: #4c5b5c;
+}
+
+/*--------------------------------------------------------------
+Layout
+--------------------------------------------------------------*/
+
+.site {
+	max-width: 80vw;
+	margin: 0 auto;
+	justify-content: center;
+
+	@media screen and (min-width: 800px) {
+		display: grid;
+		gap: 1em;
+		grid-template-areas:
+			'header main'
+			'sidebar-1 main'
+			'. sidebar-2'
+			'footer footer';
+
+		grid-template-columns: 225px 1fr;
+		grid-template-rows: 150px auto auto 150px;
+		max-width: none;
+	}
+
+	@media screen and (min-width: 1100px) {
+		grid-template-areas:
+			'header header header'
+			'sidebar-1 main sidebar-2'
+			'footer footer footer';
+		grid-template-columns: 225px minmax(auto, 30em) 250px;
+		grid-template-rows: 150px auto 150px;
+	}
+}
+
+/*--------------------------------------------------------------
+General Styles
+--------------------------------------------------------------*/
+
+/* Logo */
+.logo {
+	margin: 0 auto;
+	width: 200px;
+}
+
+/* Sidebar headers */
+[class^='sidebar'] {
+	h2 {
+		background-color: #4c5b5c;
+		color: #fff;
+		margin-top: 0;
+		padding: 0 1rem;
+		text-transform: uppercase;
+	}
+}
+
+/* Chapter navigation */
+.chapter-nav {
+	list-style: none;
+	padding: 0;
+
+	li {
+		margin: 0.5em 0;
+
+		a {
+			background-color: hsla(30, 61%, 61%, 0.3);
+			color: #000;
+			display: block;
+			padding: 0.5em 1em;
+			text-decoration: none;
+
+			&:hover {
+				background-color: hsla(30, 61%, 61%, 0.9);
+				transition: 0.2ms ease-in-out;
+			}
+		}
+	}
+}
+
+/* Credits FOOTER */
+.credits {
+	background-color: #4c5b5c;
+	color: #fff;
+	padding: 2em 1em;
+	text-align: center;
+
+	a {
+		color: #fff;
+
+		&:hover {
+			color: #f0c808;
+		}
+	}
+}
+
+.masthead {
+	/* 
+  it was needed without grid-template-areas
+  with areas it is no longer needed
+  grid-column: 1/2;
+	@media screen and (min-width: 1100px) {
+		grid-column: 1/-1;
+		grid-row: 1/2;
+	} */
+	grid-area: header;
+}
+
+.main-area {
+	/* grid-column: 2/3;
+	grid-row: 1 / span 2;
+
+	@media screen and (min-width: 1100px) {
+		grid-row: 2/3;
+	} */
+	grid-area: main;
+}
+
+.sidebar-primary {
+	/* grid-column: 1/2;
+	grid-row: 2/3; */
+	grid-area: sidebar-1;
+}
+
+.sidebar-secondary {
+	/* grid-column: 2/3;
+	grid-row: 3/4;
+
+	@media screen and (min-width: 1100px) {
+		grid-column: 3/4;
+		grid-row: 2/3;
+	} */
+	grid-area: sidebar-2;
+}
+
+footer {
+	/* grid-column: 1/-1; */
+	grid-area: footer;
+}

@@ -1,0 +1,48 @@
+.site {
+	/* this styles first */
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto;
+	grid-template-areas:
+		'header'
+		'masthead'
+		'sidebar'
+		'main'
+		'footer';
+
+	/* when it gets to 600px or larger */
+	/* . for creating a null space in the column*/
+	@media screen and (min-width: 600px) {
+		display: grid;
+		grid-template-columns: 2fr repeat(2, 1fr);
+		grid-template-rows: auto 1fr 3fr;
+		grid-template-areas:
+			'header header header'
+			'main . masthead'
+			'main sidebar .'
+			'footer footer footer';
+	}
+}
+.skip-link {
+}
+.screen-reader-text {
+}
+.masthead {
+	grid-area: masthead;
+}
+.identifier {
+}
+.page-title {
+	grid-area: header;
+}
+.main-content {
+	grid-area: main;
+}
+.sidebar {
+	grid-area: sidebar;
+}
+.footer-content {
+	grid-area: footer;
+}
+.bg {
+}
