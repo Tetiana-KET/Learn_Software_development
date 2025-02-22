@@ -1,0 +1,117 @@
+/*--------------------------------------------------------------
+Layout
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+General Styles
+--------------------------------------------------------------*/
+body {
+	margin: 0;
+}
+
+/* Logo */
+.logo {
+	margin: 0 auto;
+	width: 200px;
+}
+
+/* Cards Container */
+/* primary grid */
+.cards {
+	margin: 2em;
+	display: grid;
+	gap: 2em;
+	justify-content: center;
+
+	@media screen and (min-width: 660px) {
+		grid-template-columns: repeat(2, minmax(300px, 360px));
+	}
+
+	@media screen and (min-width: 1100px) {
+		grid-template-columns: repeat(3, minmax(300px, 360px));
+	}
+}
+
+/*secondary grid*/
+/*
+> is the child combinator.
+* is the universal selector, meaning it selects all direct children of .card.
+This means that every direct child element of .card will have these styles applied.
+
+this is a shorthand notation. 
+When you don't specify the column or row end line,
+the default behavior is to span only one line
+grid-column: 1;
+grid-row: 1;
+
+
+*/
+.card {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: 1fr;
+	border: 5px solid white;
+	box-shadow: 2px 1px 10px rgba(0, 0, 0, 0.35);
+	max-width: 360px;
+
+	> * {
+		grid-column: 1;
+		grid-row: 1;
+	}
+}
+
+/* Featured image */
+.featured-image {
+	img {
+		max-height: 400px;
+		width: auto;
+	}
+
+	justify-self: center;
+}
+
+/* Info */
+.info {
+	background: hsla(246, 40%, 30%, 0.7);
+	color: white;
+	padding: 2em;
+
+	align-items: end;
+
+	&:hover,
+	&:focus {
+		background: hsla(335, 100%, 35%, 0.8);
+	}
+}
+
+.name {
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.title {
+	font-size: 1.2rem;
+	font-weight: 700;
+}
+
+/* Colophon */
+footer {
+	background-color: #4c5b5c;
+	color: #fff;
+	width: 100vw;
+}
+
+.credits aside {
+	padding: 2em 1em;
+	text-align: center;
+	margin: 0 auto;
+	max-width: 1200px;
+
+	a {
+		color: #fff;
+
+		&:hover {
+			color: #f0c808;
+		}
+	}
+}
