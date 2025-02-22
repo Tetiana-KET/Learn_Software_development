@@ -1,0 +1,164 @@
+/*--------------------------------------------------------------
+General Styles
+--------------------------------------------------------------*/
+body {
+	margin: 0;
+}
+
+.site {
+	margin: 2em auto;
+	max-width: 1200px;
+}
+
+/* Logo */
+.logo {
+	margin: 0 auto;
+	width: 200px;
+}
+
+.card {
+	background: #fff;
+	border: 2px solid #bdbdbd;
+	border-radius: 18px;
+	padding: 2em;
+}
+
+/* Featured image */
+.featured-image {
+	img {
+		max-height: 300px;
+		width: auto;
+	}
+}
+
+/* Info */
+.name {
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.title {
+	font-size: 1.2rem;
+	font-weight: 700;
+}
+
+.description {
+	font-size: 0.9em;
+	margin: 0;
+}
+
+footer {
+	background-color: #4c5b5c;
+	color: #fff;
+	width: 100vw;
+}
+
+.credits aside {
+	padding: 2em 1em;
+	text-align: center;
+	margin: 0 auto;
+	max-width: 1200px;
+
+	a {
+		color: #fff;
+
+		&:hover {
+			color: #f0c808;
+		}
+	}
+}
+
+/*--------------------------------------------------------------
+Layout Styles
+--------------------------------------------------------------*/
+
+/* Primary grid */
+
+.cards {
+	display: grid;
+	grid-template-areas:
+		'card1'
+		'card2'
+		'card3'
+		'card4'
+		'card5'
+		'card6';
+	gap: 60px 20px;
+
+	@media screen and (min-width: 980px) {
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-areas:
+			'card1 card1 card3'
+			'card2 card2 card3'
+			'card4 card5 card5'
+			'card4 card6 card6';
+	}
+
+	.card:nth-of-type(1) {
+		grid-area: card1;
+	}
+
+	.card:nth-of-type(2) {
+		grid-area: card2;
+	}
+
+	.card:nth-of-type(3) {
+		grid-area: card3;
+		align-self: self-start;
+	}
+
+	.card:nth-of-type(4) {
+		grid-area: card4;
+		align-self: self-end;
+	}
+
+	.card:nth-of-type(5) {
+		grid-area: card5;
+	}
+	.card:nth-of-type(6) {
+		grid-area: card6;
+	}
+}
+
+/* Secondary grid, inside every card */
+
+.card {
+	/*mobile first, below 600*/
+	display: grid;
+	grid-template-columns: 1fr;
+
+	@media screen and (min-width: 600px) {
+		/*Start from 600px and above*/
+		grid-template-columns: repeat(2, 1fr);
+		&:nth-of-type(1),
+		&:nth-of-type(5) {
+			grid-template-areas: 'image text';
+		}
+
+		&:nth-of-type(2),
+		&:nth-of-type(6) {
+			grid-template-areas: 'text image';
+		}
+
+		&:nth-of-type(3),
+		&:nth-of-type(4) {
+			grid-template-columns: 1fr;
+			grid-template-rows: 350px 1fr;
+			grid-template-areas:
+				'image'
+				'text';
+		}
+
+		.featured-image {
+			grid-area: image;
+		}
+
+		.info {
+			grid-area: text;
+		}
+	}
+
+	.featured-image {
+		justify-self: center;
+	}
+}
