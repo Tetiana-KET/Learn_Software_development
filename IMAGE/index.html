@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Modern image markup</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<main class="container">
+			<div class="content">
+				<p>
+					images are inline by default, that's why you may see a space beneath
+					the image, which is for descender. This ia an the extra space that
+					appears below an inline image due to how browsers handle inline
+					elements. By default, images are treated as inline elements (like
+					text). When an image is placed inside a container, browsers align it
+					along the baseline of surrounding text. Since text characters like g,
+					y, p, or q have descenders (the parts that go below the baseline), the
+					browser leaves extra space for them—even if there’s no actual text.
+				</p>
+				<ol>
+					To remove this extra space use:
+					<li>
+						<em>display: block</em> - This removes inline behavior and
+						eliminates the extra space.
+						<code>img { display: block; }</code>
+					</li>
+					<li>
+						<em>vertical-align: bottom</em> - This ensures the image aligns with
+						the bottom of its container instead of the text baseline.
+						<code>img { vertical-align: bottom; }</code>
+					</li>
+				</ol>
+
+				<!-- it is good practice to declare proportions of the image using width and height attributes-->
+				<!-- the browser will build a box that is proportionally correct even before the image itself is loaded -->
+				<!-- loading="lazy" will tel the browser to load the img even it it is close to the viewport when scrolling - that is a good practice to do -->
+
+				<div class="img-container">
+					<img
+						class="kitten"
+						src="../assets/images/inbox_kitten-0f29863e.png"
+						alt="image of a kitten"
+						width="1700"
+						height="1700"
+						loading="lazy"
+					/>
+				</div>
+			</div>
+
+			<div class="content">
+				<h2>Fitting an image to any container</h2>
+				<p>
+					Object fit allows us to control the fit of either an image or a video
+					inside a container by specifying the size we want and then setting the
+					object fit property to either fill or contain or cover none or scale
+					down. It is applied directly to the image itself. To work, it is
+					necessary to define width and height of an image the same as the
+					container. It is better to set it to <em>inherit</em>
+				</p>
+				<div class="img-container">
+					<img
+						src="../assets/images/dx1b6fd67sje1.jpeg"
+						alt=""
+						class="the-object-fit-image"
+						width="3965"
+						height="2736"
+						loading="lazy"
+					/>
+				</div>
+			</div>
+
+			<!-- PROPORTIONAL -->
+			<div class="content">
+				<h2>Proportionate images</h2>
+				<div class="flex">
+					<figure class="card">
+						<div class="ratio-box">
+							<img
+								src="../assets/images/parrot-wide.png"
+								alt="Photo by David Clode"
+								class="the-proportional-image"
+								width="3965"
+								height="2736"
+								loading="lazy"
+							/>
+						</div>
+						<figcaption>
+							<h1>Gouldian Finch</h1>
+							<p>This bird means business!</p>
+						</figcaption>
+					</figure>
+					<figure class="card">
+						<div class="ratio-box">
+							<img
+								src="../assets/images/monkey2000.jpg"
+								alt="Photo by Jessy Hoffmann"
+								class="the-proportional-image"
+								width="4032"
+								height="2262"
+								loading="lazy"
+							/>
+						</div>
+						<figcaption>
+							<h1>Monkey</h1>
+							<p>Monkey has questions.</p>
+						</figcaption>
+					</figure>
+				</div>
+			</div>
+
+			<!-- CROPPING -->
+			<div class="content">
+				<h2>Cropping images</h2>
+				<figure class="card">
+					<div class="ratio-box">
+						<img
+							src="../assets/images/monkey640.jpg"
+							alt="Photo by Jessy Hoffmann"
+							class="cropping-image"
+							width="4032"
+							height="2262"
+							loading="lazy"
+						/>
+					</div>
+					<figcaption>
+						<h1>Monkey</h1>
+						<p>Monkey has questions.</p>
+					</figcaption>
+				</figure>
+			</div>
+
+			<!-- GRID -->
+			<div class="content">
+				<h2>Fitting an image inside a grid cell</h2>
+				<p>
+					Let's see how these image sizing techniques work with modern layout
+					tools. In this example, We have four images of different size and
+					different proportion displayed in a two by two grid.
+				</p>
+				<article class="content-grid">
+					<img
+						src="../assets/images/funny1.webp"
+						alt="Photo by Joseph Gonzalez"
+						width="3569"
+						height="5354"
+						loading="lazy"
+					/>
+					<img
+						src="../assets/images/funny5.jpg"
+						alt="Photo by EDDIE DEAN"
+						width="5184"
+						height="3456"
+						loading="lazy"
+					/>
+					<img
+						src="../assets/images/funny3.jpg"
+						alt="Photo by Karabo Mdluli"
+						width="4000"
+						height="6016"
+						loading="lazy"
+					/>
+					<img
+						src="../assets/images/funny8.avif"
+						alt="Photo by Jeffery Erhunse"
+						width="4024"
+						height="6048"
+						loading="lazy"
+					/>
+				</article>
+			</div>
+
+			<!-- FLEX -->
+			<div class="content">
+				<h2>Fitting an image inside flexbox</h2>
+				<p>
+					Fitting images inside flexible boxes or flex box or display flex boxes
+					works a little bit differently from grid. Flex will scale its child
+					elements to 100% of the height of the flex container to create equal
+					height columns by default. If an image height is set to auto? the
+					image will automatically be stretched to the height of its container
+					and as a result we get stretched images. To fix it, use object fit and
+					set it to cover. Now the images fill out the available space of their
+					containers
+				</p>
+				<article class="content-flex">
+					<img
+						src="../assets/images/funny1.webp"
+						alt="Photo by Joseph Gonzalez"
+						width="3569"
+						height="5354"
+						loading="lazy"
+					/>
+					<img
+						src="../assets/images/funny5.jpg"
+						alt="Photo by EDDIE DEAN"
+						width="5184"
+						height="3456"
+						loading="lazy"
+					/>
+					<img
+						src="../assets/images/funny3.jpg"
+						alt="Photo by Karabo Mdluli"
+						width="4000"
+						height="6016"
+						loading="lazy"
+					/>
+					<img
+						src="../assets/images/funny8.avif"
+						alt="Photo by Jeffery Erhunse"
+						width="4024"
+						height="6048"
+						loading="lazy"
+					/>
+				</article>
+			</div>
+
+			<!-- FLEX CARD-->
+			<div class="content">
+				<h2>Fitting an image inside a figure inside flexbox</h2>
+				<article class="content-flex-cards">
+					<figure class="figure-image-flex-card">
+						<img
+							src="../assets/images/funny2.avif"
+							alt="Photo by Joseph Gonzalez"
+							width="3569"
+							height="5354"
+							loading="lazy"
+						/>
+					</figure>
+					<figure class="figure-image-flex-card">
+						<img
+							src="../assets/images/funny6.avif"
+							alt="Photo by EDDIE DEAN"
+							width="5184"
+							height="3456"
+							loading="lazy"
+						/>
+					</figure>
+					<figure class="figure-image-flex-card">
+						<img
+							src="../assets/images/funny7.avif"
+							alt="Photo by Karabo Mdluli"
+							width="4000"
+							height="6016"
+							loading="lazy"
+						/>
+					</figure>
+					<figure class="figure-image-flex-card">
+						<img
+							src="../assets/images/funny9.avif"
+							alt="Photo by Jeffery Erhunse"
+							width="4024"
+							height="6048"
+							loading="lazy"
+						/>
+					</figure>
+				</article>
+			</div>
+
+			<!-- BACKGROUND IMAGE -->
+			<div class="content">
+				<p>
+					When you add a background image, it is automatically added in its full
+					size. So what you're initially seeing will be actually just a top left
+					corner of the whole background image. It is scaled to its full size,
+					and then it's cropped by the container. If you want to resize this
+					background image to make it fit within the container, use a
+					background-size property.
+				</p>
+				<p>
+					The <b>background-origin</b> property controls where the background
+					image or background color starts within an element. If you combine
+					background-origin and background-size cover, you may get unexpected
+					behavior. So this is something worth keeping in mind.
+				</p>
+				<dl>
+					<dt><b>border-box</b></dt>
+					<dd>
+						Background starts from the outer edge of the border (includes the
+						border).
+					</dd>
+
+					<dt><b>padding-box (default)</b></dt>
+					<dd>
+						Background starts from the inner edge of the border (does not cover
+						the border).
+					</dd>
+
+					<dt><b>content-box</b></dt>
+					<dd>
+						Background starts from inside the padding, covering only the content
+						area (not padding or border).
+					</dd>
+				</dl>
+			</div>
+			<div class="content background-image-content">
+				<h2>Background Images</h2>
+			</div>
+
+			<!-- CHANGING THE SHAPE OF IMAGE -->
+			<div class="content shape-content">
+				<p>
+					If you have absolute value of radius - px or rem, when you get to a
+					border radius that is the size of the box itself, in this case, the
+					height, it stops changing. So even though you keep increasing the size
+					here, the roundedness of the corner does not change. However, if we
+					set it to a percentage value, so let's say 50%, you can see it's now
+					50% of either the height or the width, and as a result we get this
+					oblong ellipsis instead of a circle.
+				</p>
+				<p>
+					You can actually apply a border radius to each individual corner,
+					starting from the top left and then going around in a circle.
+				</p>
+				<p>
+					either change the shape of the image itself, or you can change the
+					shape of the overall container that holds the image, and then set
+					overflow hidden to ensure that the image doesn't spill out.
+				</p>
+				<img
+					src="../assets/images/nature2.jpg"
+					alt="Photo by Donald Giannatti"
+					width="5472"
+					height="3648"
+					loading="lazy"
+				/>
+
+				<div class="image-shape-container">
+					<img
+						src="../assets/images/nature3.jpg"
+						alt="Photo by Donald Giannatti"
+						width="5472"
+						height="3648"
+						loading="lazy"
+					/>
+				</div>
+			</div>
+
+			<!-- Cropping images to a perfect circle -->
+			<article class="content perfect-circle-content">
+				<h2>Cropping images to a responsive perfect circle</h2>
+				<div class="perfect-circle-ratio-box">
+					<img
+						src="../assets/images/nature1.jpg"
+						alt="Photo by Donald Giannatti"
+						width="5472"
+						height="3648"
+						loading="lazy"
+					/>
+				</div>
+			</article>
+			<!-- clip-path -->
+			<article class="content">
+				<h2>Clip-path</h2>
+				<p>
+					Some times, you need a different shape, then just a circle, Maybe a
+					triangle or a square turned on its side like you see here, or some
+					other shape entirely. For those purposes, you can clip your image
+					using CSS with the help of the <code>clip-path</code> property.
+					Clip-path allows you to define a path and then click the image based
+					on that path.
+				</p>
+				<div class="content-clip-path">
+					<div class="ratio-box-clip-path">
+						<img
+							src="../assets/images/nature1.jpg"
+							alt=""
+							width="600"
+							height="400"
+							loading="lazy"
+						/>
+					</div>
+					<div class="ratio-box-clip-path">
+						<img
+							src="../assets/images/nature2.jpg"
+							alt=""
+							width="600"
+							height="400"
+							loading="lazy"
+						/>
+					</div>
+					<div class="ratio-box-clip-path">
+						<img
+							src="../assets/images/nature3.jpg"
+							alt=""
+							width="600"
+							height="400"
+							loading="lazy"
+						/>
+					</div>
+					<div class="ratio-box-clip-path">
+						<img
+							src="../assets/images/nature4.webp"
+							alt=""
+							width="600"
+							height="400"
+							loading="lazy"
+						/>
+					</div>
+				</div>
+			</article>
+
+			<article class="content">
+				<h2></h2>
+				<div class="ratio-box">
+					<img
+						src="../assets/images/nature.jpg"
+						alt=""
+						width="600"
+						height="400"
+						loading="lazy"
+					/>
+				</div>
+			</article>
+
+			<article class="content">
+				<h2></h2>
+				<div class="ratio-box">
+					<img
+						src="../assets/images/nature.jpg"
+						alt=""
+						width="600"
+						height="400"
+						loading="lazy"
+					/>
+				</div>
+			</article>
+		</main>
+	</body>
+</html>
